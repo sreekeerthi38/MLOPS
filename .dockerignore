@@ -1,0 +1,10 @@
+venv/
+.git/
+__pycache__/
+*.pyc
+mlruns/
+.pytest_cache/
+eda_outputs/
+screenshots/
+report/
+*.egg-info/
