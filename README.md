@@ -5,6 +5,8 @@
 python -m venv venv && source venv/bin/activate   # Windows: venv\Scripts\activate
 pip install -r requirements.txt
 ```
+Below is the archhitecture diagram
+
 
 ## 1. Get the data
 ```bash
@@ -32,7 +34,7 @@ scale_pos_weight for XGBoost) computed from the training split. Logs
 params/metrics/plots/model to MLflow for all three,
 and saves the best pipeline to `models/model.joblib`.
 
-### Personalization choices (cite these in your report's originality section)
+### Personalization choices 
 - **Feature engineering** (`src/feature_engineering.py`): `age_group` bins,
   `chol_bp_ratio`, `hr_reserve` (220 - age - thalach) — computed identically
   at training and inference time (see `api/main.py`), which is the part most
@@ -87,4 +89,4 @@ scrape_configs:
     static_configs:
       - targets: ['localhost:8000']
 ```
-Then build a Grafana dashboard on top for the screenshot the report asks for.
+
