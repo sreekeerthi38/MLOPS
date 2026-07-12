@@ -29,12 +29,12 @@ jobs:
       - name: Run unit tests
         run: pytest tests/ -v
 
-      # Model training is optional / heavy — only run on main
+      # Data ships in the repo (data/heart.csv), so no download is needed in CI.
+      # Training now fails the pipeline on real errors, satisfying the
+      # "pipeline must fail on code or test errors" requirement.
       - name: Train model (main branch only)
         if: github.ref == 'refs/heads/main'
-        run: |
-          python data/download_data.py || echo "Skipping live download in CI"
-          python src/train.py || echo "Training skipped — no data available"
+        run: python src/train.py
 
       - name: Build Docker image
         run: docker build -t heart-disease-api:${{ github.sha }} .
